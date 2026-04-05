@@ -1,0 +1,103 @@
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.card {
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    border: none;
+    margin-bottom: 20px;
+}
+
+.btn-submit {
+    background: #0d6efd;
+    color: white;
+    padding: 12px 25px;
+    font-weight: bold;
+    border-radius: 8px;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    background: #0b5ed7;
+    color: white;
+    transform: scale(1.02);
+}
+
+.footer {
+    background-color: #1a1a2e;
+    color: #ccc;
+    padding: 1.5rem 0;
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.required:after {
+    content: " *";
+    color: #dc3545;
+}
+
+
+.carousel-caption {
+    background: rgba(0, 0, 0, 0.6);
+    border-radius: 10px;
+    padding: 12px 20px;
+}
+
+.carousel-caption h5 {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.carousel-caption p {
+    font-size: 0.85rem;
+    margin: 5px 0 0 0;
+}
+.carousel-item img {
+    height: 200px;
+    object-fit: cover;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .carousel-item img {
+        height: 150px;
+    }
+}
+    
+    .btn-submit {
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+}
+
+.invalid-feedback {
+    display: none;
+    width: 100%;
+    margin-top: 0.25rem;
+    font-size: 0.875em;
+    color: #dc3545;
+}
+
+.form-control.is-invalid ~ .invalid-feedback {
+    display: block;
+}
+
+.form-control.is-valid {
+    border-color: #198754;
+}
+
+.form-control.is-invalid {
+    border-color: #dc3545;
+}
