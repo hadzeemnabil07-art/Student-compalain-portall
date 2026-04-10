@@ -3,175 +3,188 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-    <title>Student Service Portal | Redesigned</title>
-    
-    <!-- Bootstrap 5 CSS CDN -->
+    <title>Politeknik Balik Pulau | Student Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <!-- External CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <!-- ========== NAVBAR ========== -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <i class="fas fa-university"></i> StudentPortal
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
-                </ul>
+    <!-- LOGIN OVERLAY -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-card">
+            <div class="text-center mb-4">
+                <i class="fas fa-graduation-cap fa-3x" style="color:#2c7da0;"></i>
+                <h2 class="mt-3 fw-bold">Politeknik Balik Pulau</h2>
+                <p class="text-muted">Student Portal • Please verify your identity</p>
+            </div>
+            
+            <!-- WARNING ALERT - This will show when input is wrong -->
+            <div id="loginWarningAlert" class="alert alert-danger" style="display: none; border-radius: 16px;">
+                <i class="fas fa-exclamation-triangle me-2"></i>
+                <strong>Login Failed!</strong>
+                <div id="loginWarningMessage" style="margin-top: 5px; font-size: 13px;"></div>
+            </div>
+            
+            <form id="loginForm">
+                <div class="mb-3">
+                    <label class="form-label fw-semibold required">Full Name</label>
+                    <input type="text" class="form-control" id="loginName" placeholder="e.g. Ahmad Faiz Bin Abdullah">
+                    <div class="invalid-feedback">Name must be at least 3 characters long.</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold required">Student ID / Matric No.</label>
+                    <input type="text" class="form-control" id="loginStudentId" placeholder="e.g. 21DIT25F1234">
+                    <div class="invalid-feedback">Student ID is required (at least 5 characters).</div>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label fw-semibold required">Email Address</label>
+                    <input type="email" class="form-control" id="loginEmail" placeholder="e.g. ahmad.faiz@student.pbp.edu.my">
+                    <div class="invalid-feedback">Please enter a valid email address.</div>
+                </div>
+                <div class="mb-4">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="rememberCheck">
+                        <label class="form-check-label small text-muted">Remember me on this device</label>
+                    </div>
+                </div>
+                <button type="submit" class="btn-login w-100">
+                    <i class="fas fa-arrow-right-to-bracket"></i> Access Dashboard
+                </button>
+            </form>
+            <div class="mt-4 text-center">
+                <small class="text-muted"><i class="fas fa-shield-alt"></i> Secure student portal • Authorized access only</small>
             </div>
         </div>
-    </nav>
-
-    <!-- ========== CAROUSEL ========== -->
-<div class="container mt-4">
-    <div id="demoCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#demoCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#demoCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#demoCarousel" data-bs-slide-to="2"></button>
-        </div>
-        <div class="carousel-inner rounded-3">
-            <div class="carousel-item active">
-                <img src="https://placehold.co/1200x300/0d6efd/white?text=Welcome+to+Student+Portal" class="d-block w-100" alt="Slide 1">
-            </div>
-            <div class="carousel-item">
-                <img src="https://placehold.co/1200x300/0d6efd/white?text=Quick+Complaint+Submission" class="d-block w-100" alt="Slide 2">
-            </div>
-            <div class="carousel-item">
-                <img src="https://placehold.co/1200x300/0d6efd/white?text=Call+or+Email+Us" class="d-block w-100" alt="Slide 3">
-            </div>
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#demoCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#demoCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
     </div>
-</div>
 
-    <!-- ========== 3-COLUMN GRID ========== -->
-    <div class="container my-5">
-        <div class="row g-4">
-            
-            <!-- COLUMN 1: Complaint Form -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card p-3">
-                    <div class="card-body">
-                        <h4 class="card-title"><i class="fas fa-edit"></i> Submit Complaint</h4>
-                        <p class="text-muted small">All fields are required.</p>
-                        
-                        <form id="complaintForm" novalidate>
-                            <div class="mb-3">
-                                <label for="studentName" class="form-label required">Full Name</label>
-                                <input type="text" class="form-control" id="studentName">
-                                <div class="invalid-feedback">Please enter your full name (min 3 characters).</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="regNo" class="form-label required">Registration Number</label>
-                                <input type="text" class="form-control" id="regNo">
-                                <div class="invalid-feedback">Registration number is required.</div>
-                            </div>
-                            <div class="mb-3">
-                                <label for="complaintDesc" class="form-label required">Complaint Description</label>
-                                <textarea class="form-control" id="complaintDesc" rows="3"></textarea>
-                                <div class="invalid-feedback">Please describe your issue.</div>
-                            </div>
-                            
-                            <div class="mb-3">
-                                <i class="fas fa-info-circle text-info" style="cursor:pointer;" data-bs-toggle="tooltip" title="Your complaint will be processed within 24 hours."></i>
-                                <span class="ms-1 small">Need help?</span>
-                                <button type="button" class="btn btn-sm btn-outline-info ms-2" id="guidelinesBtn" data-bs-toggle="popover" data-bs-title="Guidelines" data-bs-content="Please write clearly. Avoid offensive language.">Guidelines</button>
-                            </div>
-                            
-                            <button type="button" id="submitBtn" class="btn-submit">
-                                <i class="fas fa-paper-plane"></i> Submit Complaint
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- COLUMN 2: Contact & Quick Links -->
-            <div class="col-12 col-md-6 col-lg-4">
-                <div class="card p-3">
-                    <div class="card-body">
-                        <h5><i class="fas fa-headset"></i> Contact Support</h5>
-                        <hr>
-                        <p><i class="fas fa-phone-alt text-primary"></i> <strong>Call:</strong> <a href="tel:+60123456789">+60 12-345 6789</a></p>
-                        <p><i class="fas fa-envelope text-primary"></i> <strong>Email:</strong> <a href="mailto:support@studentportal.edu.my">support@studentportal.edu.my</a></p>
-                        <hr>
-                        <h6><i class="fas fa-clock"></i> Operating Hours</h6>
-                        <ul class="list-unstyled small">
-                            <li>Monday - Friday: 8am - 8pm</li>
-                            <li>Saturday: 9am - 1pm</li>
-                            <li>Sunday: Closed</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- COLUMN 3: Statistics -->
-            <div class="col-12 col-md-12 col-lg-4">
-                <div class="card p-3">
-                    <div class="card-body">
-                        <h5><i class="fas fa-chart-simple"></i> System Status</h5>
-                        <hr>
-                        <div id="counterDisplay" class="text-center p-3 bg-light rounded" style="min-height: 100px;">
-                            Loading...
-                        </div>
-                        <button class="btn btn-secondary btn-sm w-100 mt-3" id="refreshStatsBtn">
-                            <i class="fas fa-refresh"></i> Refresh Stats
+    <!-- MAIN PORTAL CONTENT -->
+    <div id="portalContent" style="display: none;">
+        <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+            <div class="container">
+                <a class="navbar-brand" href="#"><i class="fas fa-graduation-cap"></i> PoliBalik Pulau Portal</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item"><a class="nav-link active" href="#" data-view="dashboard">Dashboard</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-view="timetable">Timetable</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-view="results">Results</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#" data-view="services">Services</a></li>
+                    </ul>
+                    <div class="ms-lg-3 mt-2 mt-lg-0">
+                        <button class="btn btn-outline-light btn-sm rounded-pill" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Logout
                         </button>
-                        <div class="alert alert-info mt-3 small">
-                            <i class="fas fa-mobile-alt"></i> <strong>Mobile Friendly</strong> – Optimized for all devices.
+                    </div>
+                </div>
+            </div>
+        </nav>
+
+        <div class="container my-4">
+            <!-- DASHBOARD VIEW -->
+            <div id="dashboardView" class="view-panel">
+                <div class="row g-4">
+                    <div class="col-12">
+                        <div class="welcome-card p-4 rounded-4">
+                            <div class="d-flex flex-wrap justify-content-between align-items-center">
+                                <div>
+                                    <h2 class="fw-bold">Welcome back, <span id="studentNameDisplay">Student</span> 👋</h2>
+                                    <p>Student ID: <span id="studentIdDisplay">---</span> | Email: <span id="studentEmailDisplay">---</span></p>
+                                </div>
+                                <div class="stats-chip"><i class="fas fa-calendar-alt"></i> Semester 2, 2025/2026</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-card text-center p-3">
+                            <i class="fas fa-clock fs-1" style="color:#2c7da0;"></i>
+                            <h3 class="mt-2" id="classCount">6</h3>
+                            <p class="text-muted">Enrolled Courses</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-card text-center p-3">
+                            <i class="fas fa-chart-line fs-1" style="color:#2c7da0;"></i>
+                            <h3 class="mt-2" id="cgpaDisplay">3.67</h3>
+                            <p class="text-muted">Current CGPA</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="info-card text-center p-3">
+                            <i class="fas fa-ticket-alt fs-1" style="color:#2c7da0;"></i>
+                            <h3 class="mt-2" id="requestCount">0</h3>
+                            <p class="text-muted">Active Requests</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
 
-    <!-- ========== MODAL ========== -->
-    <div class="modal fade" id="confirmModal" tabindex="-1">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header bg-success text-white">
-                    <h5 class="modal-title">Confirm Submission</h5>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+            <!-- TIMETABLE VIEW -->
+            <div id="timetableView" class="view-panel" style="display: none;">
+                <div class="glass-card p-4">
+                    <h3><i class="fas fa-table-list me-2"></i> Weekly Class Schedule</h3>
+                    <div class="table-responsive mt-3">
+                        <table class="table timetable-table">
+                            <thead><tr><th>Time</th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th></tr></thead>
+                            <tbody id="timetableBody"></tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <p>Are you sure you want to submit this complaint?</p>
-                    <p class="small text-muted">Please verify your details before final submission.</p>
+            </div>
+
+            <!-- RESULTS VIEW -->
+            <div id="resultsView" class="view-panel" style="display: none;">
+                <div class="glass-card p-4">
+                    <h3><i class="fas fa-chart-simple me-2"></i> Academic Results</h3>
+                    <div class="table-responsive mt-3">
+                        <table class="table results-table">
+                            <thead><tr><th>Course Code</th><th>Course Name</th><th>Credits</th><th>Grade</th><th>Status</th></tr></thead>
+                            <tbody id="resultsBody"></tbody>
+                        </table>
+                    </div>
+                    <div class="row mt-4">
+                        <div class="col-md-6"><div class="p-3 bg-light rounded-3"><strong>📊 Semester GPA:</strong> <span id="semesterGpa" class="fs-4 fw-bold">0.00</span></div></div>
+                        <div class="col-md-6"><div class="p-3 bg-light rounded-3"><strong>🏆 Cumulative CGPA:</strong> <span id="cumulativeCgpa" class="fs-4 fw-bold">0.00</span></div></div>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                    <button type="button" class="btn btn-primary" id="finalConfirmBtn">Yes, Submit</button>
+            </div>
+
+            <!-- SERVICES VIEW -->
+            <div id="servicesView" class="view-panel" style="display: none;">
+                <div class="row g-4">
+                    <div class="col-lg-7">
+                        <div class="glass-card p-4">
+                            <h4><i class="fas fa-pen-alt me-2"></i> Raise a Service Request</h4>
+                            <div id="serviceWarningAlert" class="alert alert-danger" style="display: none; border-radius: 16px;">
+                                <i class="fas fa-exclamation-triangle me-2"></i>
+                                <strong>Error!</strong>
+                                <div id="serviceWarningMessage"></div>
+                            </div>
+                            <form id="serviceRequestForm">
+                                <div class="mb-3"><label class="form-label fw-semibold">Full Name</label><input type="text" class="form-control" id="reqName" readonly style="background:#f8f9fa;"></div>
+                                <div class="mb-3"><label class="form-label fw-semibold">Student ID</label><input type="text" class="form-control" id="reqStudentId" readonly style="background:#f8f9fa;"></div>
+                                <div class="mb-3"><label class="form-label fw-semibold">Email</label><input type="email" class="form-control" id="reqEmail" readonly style="background:#f8f9fa;"></div>
+                                <div class="mb-3"><label class="form-label fw-semibold required">Request Type</label><select class="form-select" id="reqType"><option>Academic Issue</option><option>Technical Support</option><option>Facility Complaint</option><option>Financial Aid</option><option>Other</option></select></div>
+                                <div class="mb-3"><label class="form-label fw-semibold required">Description</label><textarea class="form-control" id="reqDesc" rows="3" placeholder="Describe your concern... (min 10 chars)"></textarea><div class="invalid-feedback">Description must be at least 10 characters.</div></div>
+                                <button type="button" id="submitServiceBtn" class="btn-primary-glow w-100"><i class="fas fa-paper-plane"></i> Submit Request</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-lg-5">
+                        <div class="glass-card p-4"><h5><i class="fas fa-clock"></i> Recent Requests</h5><hr><div id="recentRequestsList"><p class="text-muted">No requests yet.</p></div><button id="refreshServiceStats" class="btn btn-outline-secondary w-100 mt-3 rounded-pill"><i class="fas fa-sync"></i> Refresh</button></div>
+                        <div class="glass-card mt-4 p-4"><h6><i class="fas fa-headset"></i> Support Contacts</h6><p><i class="fas fa-phone-alt"></i> +60 4-123 4567</p><p><i class="fas fa-envelope"></i> student.support@polibalikpulau.edu.my</p></div>
+                    </div>
                 </div>
             </div>
         </div>
+        <footer class="footer-custom"><div class="container text-center"><p>Politeknik Balik Pulau — Student Integrated Portal</p></div></footer>
     </div>
 
-    <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 Student Service Portal - Redesigned for Mobile Excellence</p>
-            <p class="small">Ethical & User-Centered Development | Bootstrap 5 + JavaScript</p>
-        </div>
-    </footer>
+    <div class="modal fade" id="serviceConfirmModal" tabindex="-1"><div class="modal-dialog modal-dialog-centered"><div class="modal-content rounded-4"><div class="modal-header bg-success text-white"><h5 class="modal-title">Confirm Submission</h5><button type="button" class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><p>Submit this request?</p></div><div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button><button class="btn btn-primary" id="finalServiceConfirm">Confirm</button></div></div></div></div>
 
-    <!-- ========== SCRIPTS ========== -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script src="script.js"></script>
 </body>
